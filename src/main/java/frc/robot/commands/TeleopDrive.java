@@ -5,10 +5,6 @@
 package frc.robot.commands;
 
 import java.util.function.DoubleSupplier;
-
-import edu.wpi.first.wpilibj.motorcontrol.MotorController;
-import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveSubsystem;
@@ -16,16 +12,15 @@ import frc.robot.subsystems.DriveSubsystem;
 public class TeleopDrive extends CommandBase {
   /** Creates a new TeleopDrive. */
   DriveSubsystem m_DriveSubsystem;
-  DoubleSupplier xSpeed;
-  DoubleSupplier zRotation;
+  DoubleSupplier xAxis;
+  DoubleSupplier yAxis;
   DoubleSupplier throttleSupplier;
   double throttle;
 
-  public TeleopDrive(DriveSubsystem driveSubsystem, DoubleSupplier xSpeed, DoubleSupplier zRotation, DoubleSupplier throttleSupplier) {
+  public TeleopDrive(DriveSubsystem driveSubsystem, DoubleSupplier xAxis, DoubleSupplier yAxis) {
     this.m_DriveSubsystem = driveSubsystem;
-    this.xSpeed = xSpeed;
-    this.zRotation = zRotation;
-    this.throttleSupplier = throttleSupplier;
+    this.xAxis = xAxis;
+    this.yAxis = yAxis;
     addRequirements(m_DriveSubsystem);
   }
 
@@ -38,7 +33,7 @@ public class TeleopDrive extends CommandBase {
   public void execute() {
     throttle = (throttleSupplier.getAsDouble() * -1 + 1) / 2;
     SmartDashboard.putNumber("throttle", throttle);
-    m_DriveSubsystem.arcadeDrive(throttle * xSpeed.getAsDouble(), throttle * zRotation.getAsDouble());
+    m_DriveSubsystem.arcadeDrive(xAxis.getAsDouble(), yAxis.getAsDouble());
   }
 
   // Called once the command ends or is interrupted.
