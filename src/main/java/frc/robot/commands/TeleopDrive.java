@@ -31,8 +31,8 @@ public class TeleopDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    throttle = (throttleSupplier.getAsDouble() * -1 + 1) / 2;
-    SmartDashboard.putNumber("throttle", throttle);
+    // throttle = (throttleSupplier.getAsDouble() * -1 + 1) / 2;
+    // SmartDashboard.putNumber("throttle", throttle);
     m_DriveSubsystem.arcadeDrive(xAxis.getAsDouble(), yAxis.getAsDouble());
   }
 

@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.commands.BallIntakeCommand;
 import frc.robot.commands.TeleopDrive;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -22,6 +23,11 @@ public class RobotContainer {
             m_drive,
             () -> controller.getLeftX(),
             () -> controller.getLeftY()            
+        ));
+        m_feeder.setDefaultCommand(new BallIntakeCommand(
+            m_feeder,
+            ()-> controller.getLeftBumper(),
+            ()->controller.getRightBumper()
         ));
     }; 
 }
