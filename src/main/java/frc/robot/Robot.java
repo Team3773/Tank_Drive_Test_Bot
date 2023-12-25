@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 
 public class Robot extends TimedRobot {
   private RobotContainer m_RobotContainer;
+  // This is the class that sets up default commands.
 
   @Override
   public void robotInit() {

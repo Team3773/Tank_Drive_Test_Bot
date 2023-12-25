@@ -28,7 +28,8 @@ public class BallIntakeCommand extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {    
+  public void execute() {
+    //Run the Intake motors when one of the bumpers are pushed. If neither bumper is pressed then stop the motors.
     if(leftBumper.getAsBoolean()){
       intakeSubsystem.runIntake(intakeSpeed);
     }else if(rightBumper.getAsBoolean()){
