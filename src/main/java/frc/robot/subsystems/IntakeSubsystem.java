@@ -28,10 +28,14 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   public void runIntake(double speed){
+    System.out.println("Intake speed:"+ speed);
     m_intakeGroup.set(speed);
   }
 
   public void stopIntake(){
-    m_intakeGroup.set(0);
+    var speed = 0;
+    System.out.println("Intake speed:"+ speed);
+    m_intakeGroup.set(speed);
   }
+
 }

@@ -16,9 +16,11 @@ public class BallIntakeCommand extends CommandBase {
   BooleanSupplier leftBumper;
   BooleanSupplier rightBumper;
 
-  public BallIntakeCommand(IntakeSubsystem intakeSubsystem,BooleanSupplier leftBumper, BooleanSupplier rightBumper) {
+  public BallIntakeCommand(IntakeSubsystem intakeSubsystem, BooleanSupplier leftBumper, BooleanSupplier rightBumper) {
     this.intakeSubsystem = intakeSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
+    this.leftBumper = leftBumper;
+    this.rightBumper = rightBumper;
     addRequirements(intakeSubsystem);
   }
 

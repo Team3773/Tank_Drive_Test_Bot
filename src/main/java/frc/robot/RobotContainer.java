@@ -23,17 +23,18 @@ public class RobotContainer {
     // Constructor for the RobotContainer Class.
     public RobotContainer() {
         // Set Default Command for the drivetrain subsystem. This will be active during teleop mode.
+        System.out.println("Creating Commands");
         m_drive.setDefaultCommand(new TeleopDrive(
             m_drive,
             () -> controller.getLeftX(),
-            () -> controller.getLeftY()            
+            () -> controller.getRightX()            
         ));
 
         //Set Default Command for the Ball Intake Subsystem
         m_feeder.setDefaultCommand(new BallIntakeCommand(
             m_feeder,
             ()-> controller.getLeftBumper(),
-            ()->controller.getRightBumper()
+            ()-> controller.getRightBumper()
         ));
     }; 
 }
