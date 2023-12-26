@@ -6,13 +6,12 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import java.io.Console;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
-import edu.wpi.first.wpilibj.motorcontrol.PWMVictorSPX;
 
 public class DriveSubsystem extends SubsystemBase {
 
@@ -24,36 +23,20 @@ public class DriveSubsystem extends SubsystemBase {
   // private static final double kWheelRadius = 0.0508; // meters
   // private static final int kEncoderResolution = 4096;
   /** Creates a new DriveTrain. */
-  private final MotorController m_leftFront = new PWMVictorSPX(4);
-  private final MotorController m_rightFront = new PWMTalonSRX(2);
-  private final MotorController m_leftBack = new PWMVictorSPX(3);
-  private final MotorController m_rightBack = new PWMTalonSRX(1);
+  private final MotorController m_leftFront = new WPI_VictorSPX(4);
+  private final MotorController m_rightFront = new WPI_TalonSRX(2);
+  private final MotorController m_leftBack = new WPI_VictorSPX(3);
+  private final MotorController m_rightBack = new WPI_TalonSRX(1);
 
   private final MotorControllerGroup m_leftGroup = new MotorControllerGroup(m_leftFront, m_leftBack);
   private final MotorControllerGroup m_rightGroup = new MotorControllerGroup(m_rightFront, m_rightBack);
 
   private DifferentialDrive drive = new DifferentialDrive(m_leftGroup, m_rightGroup);
 
-  public DriveSubsystem() {   
-    // m_leftGroup.setInverted(false);
-    // m_rightGroup.setInverted(true);
-    // drive.setSafetyEnabled(false);
-    // drive.setExpiration(.4);
-    // drive.feed();
-
+  public DriveSubsystem() {
   }
 
   public void arcadeDrive(double speed, double rotation) {
-    //System.out.println("feeding values" + speed + " rotation:" + rotation);
-    drive.tankDrive(speed, rotation);
-
+    drive.arcadeDrive(speed, rotation);
   }
-  // @Override
-  // public void periodic() {
-  // // This method will be called once per scheduler run
-  // // drive.feed();
-  // // drive.feedWatchdog();
-  // // drive.check();
-
-  // }
 }

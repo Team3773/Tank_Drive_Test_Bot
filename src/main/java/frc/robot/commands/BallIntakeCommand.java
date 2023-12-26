@@ -12,13 +12,12 @@ import frc.robot.subsystems.IntakeSubsystem;
 public class BallIntakeCommand extends CommandBase {
   /** Creates a new BallIntakeCommand. */
  IntakeSubsystem intakeSubsystem;
-  private final double intakeSpeed = 0.2;
+  private final double intakeSpeed = 0.8;
   BooleanSupplier leftBumper;
   BooleanSupplier rightBumper;
 
   public BallIntakeCommand(IntakeSubsystem intakeSubsystem, BooleanSupplier leftBumper, BooleanSupplier rightBumper) {
     this.intakeSubsystem = intakeSubsystem;
-    // Use addRequirements() here to declare subsystem dependencies.
     this.leftBumper = leftBumper;
     this.rightBumper = rightBumper;
     addRequirements(intakeSubsystem);

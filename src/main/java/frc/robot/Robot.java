@@ -3,6 +3,7 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -10,10 +11,11 @@ public class Robot extends TimedRobot {
   private RobotContainer m_RobotContainer;
   // This is the class that sets up default commands.
 
-  @Override 
-  public void robotPeriodic(){
+  @Override
+  public void robotPeriodic() {
     CommandScheduler.getInstance().run();
   }
+
   @Override
   public void robotInit() {
     m_RobotContainer = new RobotContainer();
